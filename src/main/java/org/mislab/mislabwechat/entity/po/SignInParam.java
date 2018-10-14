@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 public class SignInParam {
-    private int signNum;
+    private Integer signNum;
     private String openId;
     private String signId;
 }

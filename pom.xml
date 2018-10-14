@@ -26,6 +26,7 @@
 		<h2.vertion>1.4.196</h2.vertion>
 		<fastjson.vertion>1.2.47</fastjson.vertion>
 		<gson.vertion>2.8.5</gson.vertion>
+		<common-lang.version>3.7</common-lang.version>
 	</properties>
 
 	<dependencies>
@@ -79,6 +80,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${common-lang.version}</version>
 		</dependency>
 
 	</dependencies>
