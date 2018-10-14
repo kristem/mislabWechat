@@ -23,7 +23,13 @@ public class SignInBizServiceImpl implements SignInBizService {
 
     @Override
     public Integer getSignNumber() {
-        return cacheManager.getSignInNumber(RedisConstant.SING_IN_NUMBER_KEY);
+        // step1.生成随机的签到码
+        int signInNumber = 0; // 略去实现方式
+
+        // step2.把签到码存到redis
+        cacheManager.put(RedisConstant.SING_IN_NUMBER_KEY, signInNumber);
+
+        return signInNumber;
     }
 
     @Override
