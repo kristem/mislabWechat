@@ -34,7 +34,7 @@ public class SignInServiceImpl implements SignInService {
 	    }
 
 	    // step2.调用底层实现
-	    SignInResultModel resultModel = signInBizService.signInStatus(signInParam);
+	    SignInResultModel resultModel = signInBizService.signIn(signInParam);
         return new ResponseEntity<>(ReturnCode.SUCCESS_CODE,SUCCESS, resultModel);
     }
 

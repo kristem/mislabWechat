@@ -12,5 +12,5 @@ import java.util.List;
 public interface SignInBizService {
     Integer getSignNumber();
 
-    SignInResultModel signInStatus(SignInParam signInParam);
+    SignInResultModel signIn(SignInParam signInParam);
 }

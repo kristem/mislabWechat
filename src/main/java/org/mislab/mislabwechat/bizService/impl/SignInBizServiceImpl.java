@@ -27,7 +27,7 @@ public class SignInBizServiceImpl implements SignInBizService {
     }
 
     @Override
-    public SignInResultModel signInStatus(SignInParam signInParam) {
+    public SignInResultModel signIn(SignInParam signInParam) {
         // step1.从redis获取签到码
         int signInNumber = cacheManager.getSignInNumber(RedisConstant.SING_IN_NUMBER_KEY);
 
