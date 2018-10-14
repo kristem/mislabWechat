@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.mislab.mislabwechat.bizService.impl.SignInBizServiceImpl;
 import org.mislab.mislabwechat.constant.ReturnCode;
 import org.mislab.mislabwechat.entity.dto.ResponseEntity;
+import org.mislab.mislabwechat.entity.model.SignInResultModel;
 import org.mislab.mislabwechat.entity.po.SignInParam;
 import org.mislab.mislabwechat.entity.vo.SignInStatus;
 import org.mislab.mislabwechat.entity.vo.SignInfo;
@@ -24,7 +25,7 @@ public class SignInServiceImpl implements SignInService {
 
     @Override
     @RequestMapping(value = "/signIn", method = RequestMethod.POST)
-    public ResponseEntity<SignInStatus> signIn(@RequestBody SignInParam signInParam) {
+    public ResponseEntity<SignInResultModel> signIn(@RequestBody SignInParam signInParam) {
         // step1.参数校验（openId、signNum）
 	    if (signInParam == null
 	        || signInParam.getSignNum() == null
@@ -33,13 +34,14 @@ public class SignInServiceImpl implements SignInService {
 	    }
 
 	    // step2.调用底层实现
-        SignInStatus signInStatus = signInBizService.signInStatus(signInParam);
-        return new ResponseEntity<>(ReturnCode.SUCCESS_CODE,SUCCESS, signInStatus);
+	    SignInResultModel resultModel = signInBizService.signInStatus(signInParam);
+        return new ResponseEntity<>(ReturnCode.SUCCESS_CODE,SUCCESS, resultModel);
     }
 
     @Override
     @RequestMapping(value = "/getSignNum", method = RequestMethod.GET)
-    public ResponseEntity<SignInfo> getSignNum() {
-        return new ResponseEntity<>(ReturnCode.SUCCESS_CODE, SUCCESS, null);
+    public ResponseEntity<Integer> getSignNum() {
+    	Integer signInNumber = signInBizService.getSignNumber();
+        return new ResponseEntity<>(ReturnCode.SUCCESS_CODE, SUCCESS, signInNumber);
     }
 }
